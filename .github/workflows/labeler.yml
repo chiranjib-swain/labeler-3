@@ -1,21 +1,15 @@
-name: PR Labeler
-
+name: "Pull Request Labeler"
 on:
-  pull_request_target:
-    types: [opened, synchronize]
+- pull_request_target
 
 jobs:
-  label:
+  labeler:
     permissions:
       contents: read
       pull-requests: write
-    name: Add PR labels
     runs-on: ubuntu-latest
-
     steps:
-      # - name: Checkout the repository
-      #   uses: actions/checkout@v4
-      - id: label-the-PR
-        uses: actions/labeler@v5
-        with:
-          sync-labels: true
+    - id: label-the-PR
+      uses: actions/labeler@v5
+      with:
+        sync-labels: true
