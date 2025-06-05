@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
+      # - name: Checkout the repository
+      #   uses: actions/checkout@v4
       - id: label-the-PR
         uses: actions/labeler@v5
         with:
