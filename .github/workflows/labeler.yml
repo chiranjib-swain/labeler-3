@@ -9,6 +9,12 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
+    - name: Check Permissions
+      run: |
+        echo "Testing permissions..."
+        echo "Contents permission: ${{ permissions.contents }}"
+        echo "Pull-requests permission: ${{ permissions.pull-requests }}"
+        echo "Issues permission: ${{ permissions.issues }}"
     - id: label-the-PR
       uses: actions/labeler@v5
       with:
