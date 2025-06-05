@@ -1,6 +1,6 @@
-name: "Pull Request Labeler"
+name: 'Pull Request Labeler'
 on:
-- pull_request_target
+  - pull_request_target
 
 jobs:
   labeler:
@@ -9,23 +9,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - name: Test Permissions via API
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        echo "Testing permissions via API..."
-        curl -H "Authorization: token $GITHUB_TOKEN" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/${{ github.repository }}
-    - name: Test Custom Permissions(MY_GITHUB_TOKEN) via API
-      env:
-        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-      run: |
-        echo "Testing permissions via API..."
-        curl -H "Authorization: token $GITHUB_TOKEN" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/repos/${{ github.repository }}
-    - id: label-the-PR
-      uses: actions/labeler@v5
-      with:
-        sync-labels: true
+      - id: label-the-PR
+        uses: actions/labeler@v5
+        with:
+          sync-labels: true
